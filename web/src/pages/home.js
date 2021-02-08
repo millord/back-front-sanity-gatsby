@@ -24,13 +24,36 @@ const reducer = (state, action) => {
   }
 }
 
+// UPDATING
+client
+  .patch("7x5hkJBuoJKga49kaX12V8") // Document ID to patch
+  .set({ name: "MODIFIED" }) // Shallow merge
+  .commit() // Perform the patch and return a promise
+  .then(updatedBike => {
+    console.log("Hurray, the bike is updated! New document:")
+    console.log(updatedBike)
+  })
+  .catch(err => {
+    console.error("Oh no, the update failed: ", err.message)
+  })
+
+// Delete a documente
+// client
+//   .delete("11Z9UYIOpi3kNYocwHi57l")
+//   .then(res => {
+//     console.log("Post deleted")
+//   })
+//   .catch(err => {
+//     console.error("Delete failed: ", err.message)
+//   })
+
 export default function Home() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   const handleSubmit = event => {
     event.preventDefault()
     console.log("its working!")
-
+    /// CREATE IN SANITY
     client.create(state).then(res => {
       console.log(`document was created, document ID is ${res._id}`)
     })
