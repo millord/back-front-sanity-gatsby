@@ -47,6 +47,11 @@ client
 //     console.error("Delete failed: ", err.message)
 //   })
 
+// findOne
+// client.getDocument("7x5hkJBuoJKga49kaX12V8").then(bike => {
+//   console.log(`${bike.name}`)
+// })
+
 export default function Home() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
@@ -68,20 +73,21 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h2>Generate HTML HERE</h2>
+    <div className="home-styles">
+      <h3>Let's create your site</h3>
       <form onSubmit={handleSubmit}>
         <input
           value={state.name}
           type="text"
-          placeholder="Enter Post"
+          placeholder="Name your site"
           required
           name="name"
           onChange={updateFieldValue("name")}
         />
 
-        <button type="submit">Submit</button>
-        <a href="/">Cancel</a>
+        <button type="submit" className="progress-btn">
+          Continue
+        </button>
       </form>
     </div>
   )

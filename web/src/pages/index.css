@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: auto;
+}
+
+.container {
+  display: flex;
+}
+
+.home-styles {
+  margin: 6px 6px;
+  padding: 4px 4px;
+  border: 1px solid black;
+  height: 500px;
+}
+
+.template-styles {
+  margin: 6px 6px;
+  padding: 4px 4px;
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+}
