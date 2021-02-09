@@ -3,6 +3,7 @@ import createSchema from "part:@sanity/base/schema-creator";
 
 import blogPost from "./blogPost";
 import sponsor from "./sponsor";
+import templateData from "./templateData";
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from "all:part:@sanity/base/schema-type";
@@ -13,5 +14,5 @@ export default createSchema({
   name: "default",
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([blogPost, sponsor]),
+  types: schemaTypes.concat([blogPost, sponsor, templateData]),
 });

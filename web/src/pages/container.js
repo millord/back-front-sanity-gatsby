@@ -1,12 +1,12 @@
 import React from "react"
-import Home from "./home"
 import Template from "./template"
 import "./index.css"
+import CreateSiteForm from "./createSiteForm"
 
-export default function Generate() {
+export default function Container() {
   return (
     <div className="container">
-      <Home />
+      <CreateSiteForm />
       <Template />
     </div>
   )
