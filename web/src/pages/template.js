@@ -35,9 +35,9 @@ const findOneQuery = graphql`
   }
 `
 
-export default function ({ title, titleBgColor = "blue" }) {
+export default function ({ title, titleBgColor = "blue", fontType, fontsize }) {
   const { sanityTemplateData } = useStaticQuery(findOneQuery)
-
+  let finalFont = parseInt(fontsize)
   return (
     <div className="template-styles">
       {/* <StaticQuery
@@ -54,13 +54,19 @@ export default function ({ title, titleBgColor = "blue" }) {
       /> */}
       <Header
         color={titleBgColor || sanityTemplateData.titleBgColor}
-        style={{
-          marginBottom: `1.45rem`,
-        }}
         siteTitle={title || sanityTemplateData.title}
       />
       <section>
-        <h2>Content section </h2>
+        <h2 style={{ fontFamily: `${fontType}` }}>Content section </h2>
+        <p
+          style={{
+            fontFamily: `${fontType}`,
+            fontSize: finalFont,
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At nulla
+          facilisis placerat.
+        </p>
       </section>
 
       <footer

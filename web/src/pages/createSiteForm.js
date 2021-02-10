@@ -13,8 +13,9 @@ const client = sanityClient({
 export const INITIAL_STATE = {
   _type: "templateData",
   title: "",
+  fontType: "sans-serif",
+  fontsize: "16",
   titleBgColor: "",
-  // image: "",
 }
 
 export const reducer = (state, action) => {
@@ -53,7 +54,6 @@ export default function CreateSiteForm() {
       <div className="home-styles">
         <h3>Let's create your site</h3>
         <form onSubmit={handleSubmit}>
-          <label style={{ display: "block" }}>Site Name</label>
           <input
             value={state.title}
             type="text"
@@ -62,25 +62,48 @@ export default function CreateSiteForm() {
             name="title"
             onChange={updateFieldValue("title")}
           />
-          <label style={{ display: "block" }}>Header Color</label>
-          <input
+
+          <label htmlFor="titleBgColor" style={{ display: "block" }}>
+            Header Background
+          </label>
+          <select
+            name="cars"
+            id="cars"
             value={state.titleBgColor}
-            type="text"
-            placeholder="Enter Color"
-            required
-            name="titleBgColor"
             onChange={updateFieldValue("titleBgColor")}
-          />
+          >
+            <option value="blue">Blue</option>
+            <option value="pink">Pink</option>
+            <option value="teal">Teal</option>
+            <option value="red">Red</option>
+          </select>
 
-          {/* <input
-            value={state.image}
-            type="file"
-            required
-            name="image"
-            onChange={updateFieldValue("image")}
-            accept="image/*"
-          /> */}
-
+          <label htmlFor="fontType" style={{ display: "block" }}>
+            Font Family
+          </label>
+          <select
+            name="fontType"
+            value={state.fontType}
+            onChange={updateFieldValue("fontType")}
+          >
+            <option value="sans-serif">Sans-Serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value="emoji">Emoji</option>
+          </select>
+          <label htmlFor="fontsize" style={{ display: "block" }}>
+            Font Size
+          </label>
+          <select
+            name="fontsize"
+            value={state.fontsize}
+            onChange={updateFieldValue("fontsize")}
+          >
+            <option value="16">16px</option>
+            <option value="18">18px</option>
+            <option value="24">24px</option>
+            <option value="30">30px</option>
+          </select>
           <button type="submit" className="progress-btn">
             Create Site
           </button>
@@ -89,8 +112,9 @@ export default function CreateSiteForm() {
       <div>
         <Template
           title={state.title}
-          image={state.image}
+          fontType={state.fontType}
           titleBgColor={state.titleBgColor}
+          fontsize={state.fontsize}
         />
       </div>
     </div>

@@ -16,9 +16,14 @@ export default {
       type: "string",
     },
     {
-      name: "image",
-      title: "hero image",
-      type: "image",
+      name: "fontType",
+      title: "Font Type",
+      type: "string",
+    },
+    {
+      name: "fontsize",
+      title: "Font Size",
+      type: "string",
     },
   ],
 };
