@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react"
+import React, { useReducer } from "react"
 import Template from "./template"
 
 const sanityClient = require("@sanity/client")
@@ -11,8 +11,10 @@ const client = sanityClient({
 })
 
 export const INITIAL_STATE = {
-  _type: "blogPost",
-  name: "",
+  _type: "templateData",
+  title: "",
+  titleBgColor: "",
+  // image: "",
 }
 
 export const reducer = (state, action) => {
@@ -27,10 +29,9 @@ export const reducer = (state, action) => {
 
 export default function CreateSiteForm() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
-  // const [name, setName] = useState("")
+
   const handleSubmit = event => {
     event.preventDefault()
-    console.log("name is: ", state)
 
     // CREATE IN SANITY
     client.create(state).then(res => {
@@ -44,6 +45,7 @@ export default function CreateSiteForm() {
       field,
       value: event.target.value,
     })
+    return INITIAL_STATE
   }
 
   return (
@@ -51,31 +53,45 @@ export default function CreateSiteForm() {
       <div className="home-styles">
         <h3>Let's create your site</h3>
         <form onSubmit={handleSubmit}>
+          <label style={{ display: "block" }}>Site Name</label>
           <input
-            value={state.name}
+            value={state.title}
             type="text"
             placeholder="Name your site"
             required
-            name="name"
-            onChange={updateFieldValue("name")}
+            name="title"
+            onChange={updateFieldValue("title")}
+          />
+          <label style={{ display: "block" }}>Header Color</label>
+          <input
+            value={state.titleBgColor}
+            type="text"
+            placeholder="Enter Color"
+            required
+            name="titleBgColor"
+            onChange={updateFieldValue("titleBgColor")}
           />
 
-          <input
-            // value={state.name}
+          {/* <input
+            value={state.image}
             type="file"
             required
             name="image"
-            onChange={updateFieldValue("name")}
+            onChange={updateFieldValue("image")}
             accept="image/*"
-          />
+          /> */}
 
           <button type="submit" className="progress-btn">
-            Continue
+            Create Site
           </button>
         </form>
       </div>
       <div>
-        <Template name={state.name} />
+        <Template
+          title={state.title}
+          image={state.image}
+          titleBgColor={state.titleBgColor}
+        />
       </div>
     </div>
   )

@@ -7,6 +7,7 @@
   "dependencies": {
     "@sanity/client": "^2.2.6",
     "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -16,6 +17,8 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-source-sanity": "^6.0.5",
     "gatsby-transformer-sharp": "^2.6.0",
+    "node-sass": "^5.0.0",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
